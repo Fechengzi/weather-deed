@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="search-section">
+  <input 
+    class="search-input" 
+    placeholder="输入目的地" 
+    bindinput="onInputCity" 
+    value="{{tempCityName}}" 
+  />
+  <button class="search-btn" bindtap="onSearch">搜索</button>
+</view>
+
+  <view class="date-picker-section">
+    <picker mode="date" value="{{selectedDate}}" start="{{startDate}}" end="{{endDate}}" bindchange="onDateChange">
+      <view class="picker-box">
+        出发日期：<text class="date-text">{{selectedDate}}</text> (点击修改)
+      </view>
+    </picker>
+  </view>
+
+  <view class="header" wx:if="{{locationTemp}}">
+    <view class="city-info">{{cityName}} · {{displayDate}}</view>
+    <view class="temp-box">
+      <text class="temp-main">{{locationTemp.max}}°</text>
+      <text class="temp-sub">体感 {{locationTemp.feels_like_est}}°</text>
+    </view>
+  </view>
+
+  <view class="advice-card" wx:if="{{advice}}">
+    <view class="level-tag">{{advice.level}}</view>
+    <view class="title">{{advice.title}}</view>
+    <view class="summary">{{advice.summary}}</view>
+    <view class="warning">⚠️ {{advice.warning}}</view>
+  </view>
+
+  <view class="checklist" wx:if="{{items.length > 0}}">
+    <view class="list-title">建议携带装备 (备战清单)</view>
+    <block wx:for="{{items}}" wx:key="*this">
+      <view class="item">
+        <checkbox value="{{item}}" />
+        <text class="item-text">{{item}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="loading-text" wx:if="{{loading}}">正在计算穿衣方案...</view>
+</view>
