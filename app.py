@@ -11,7 +11,7 @@ CORS(app)
 # ================= 配置区 =================
 
 # 1. 填入你提供的 API KEY
-API_KEY = "ca9ebd0dc8934321b31ff4edec55d3e9"
+API_KEY = ""
 
 # 2. 设置 API 地址
 # 如果你是免费订阅，必须用这个 devapi
@@ -144,4 +144,5 @@ def get_advice():
     
 
 if __name__ == '__main__':
+
     app.run(debug=True, port=5000)
